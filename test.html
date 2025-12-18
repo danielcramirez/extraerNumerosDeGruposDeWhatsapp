@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Extractor de Números Colombianos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #25D366;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #25D366;
+        }
+        .phone-number {
+            font-weight: bold;
+            color: #128C7E;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Página de Test - Números Colombianos</h1>
+        <p>Esta página contiene números de prueba en diferentes formatos para verificar el extractor.</p>
+        
+        <div class="test-section">
+            <h3>Formato Internacional</h3>
+            <p>Contacto: <span class="phone-number">+57 310 555 1234</span></p>
+            <p>WhatsApp: <span class="phone-number">+57 320 456 7890</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Formato Nacional</h3>
+            <p>Teléfono: <span class="phone-number">3501234567</span></p>
+            <p>Móvil: <span class="phone-number">315 888 9999</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Con Guiones y Puntos</h3>
+            <p>Celular: <span class="phone-number">360-888-7777</span></p>
+            <p>Número: <span class="phone-number">321.999.8888</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Con Paréntesis</h3>
+            <p>Tel: <span class="phone-number">(304) 777 6666</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Enlaces</h3>
+            <p><a href="tel:+573185554444">Llamar: 318 555 4444</a></p>
+            <p><a href="https://wa.me/573005556666">WhatsApp: 300 555 6666</a></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Operadores Diversos</h3>
+            <p>Claro: <span class="phone-number">310 111 2222</span></p>
+            <p>Movistar: <span class="phone-number">350 333 4444</span></p>
+            <p>Tigo: <span class="phone-number">300 555 6666</span></p>
+            <p>WOM: <span class="phone-number">360 777 8888</span></p>
+            <p>ETB: <span class="phone-number">340 999 0000</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>Con Caracteres Españoles</h3>
+            <p>José García - Bogotá: <span class="phone-number">311 222 3333</span></p>
+            <p>María Peña - Medellín: <span class="phone-number">320 444 5555</span></p>
+            <p>Ñoño González - Cañón: <span class="phone-number">350 666 7777</span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Cargar el script del extractor automáticamente al cargar la página
+        window.addEventListener('load', function() {
+            console.log('✅ Página de test cargada');
+            console.log('📝 Para ejecutar el extractor:');
+            console.log('   1. Abre la consola (F12)');
+            console.log('   2. Pega el contenido de extraerNumeros.js');
+            console.log('   3. Presiona Enter');
+        });
+    </script>
+</body>
+</html>
