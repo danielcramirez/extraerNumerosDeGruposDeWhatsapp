@@ -16,14 +16,14 @@ Script de JavaScript para consola del navegador que extrae, clasifica y exporta 
 
 El script detecta números de todos los operadores móviles colombianos:
 
-- **Claro**: 300-329
-- **Movistar**: 350-359
-- **Tigo**: 300-319
+- **Tigo**: 300-309
+- **Claro**: 310-329
 - **Avantel**: 330-333
-- **ETB**: 340-343, 325
-- **Virgin Mobile**: 344-349
-- **WOM**: 360-369
 - **Flash Mobile**: 334-339
+- **ETB**: 325, 340-343
+- **Virgin Mobile**: 344-349
+- **Movistar**: 350-359
+- **WOM**: 360-369
 - **Uff Móvil**: 324
 
 ## 🚀 Uso Rápido

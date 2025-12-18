@@ -490,6 +490,8 @@
 
         /**
          * Método alternativo para copiar al portapapeles
+         * Usa execCommand (deprecated) como fallback para navegadores antiguos
+         * que no soportan la API moderna de Clipboard
          */
         copiarAlPortapapelesFallback(texto) {
             const textarea = document.createElement('textarea');
@@ -500,8 +502,9 @@
             textarea.select();
             
             try {
+                // Nota: execCommand está deprecado pero funciona como fallback
                 document.execCommand('copy');
-                console.log('✅ Copiado al portapapeles (fallback)');
+                console.log('✅ Copiado al portapapeles (fallback - método deprecado pero funcional)');
             } catch (err) {
                 console.error('❌ Error al copiar:', err);
             }
