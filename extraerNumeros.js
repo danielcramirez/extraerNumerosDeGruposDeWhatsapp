@@ -10,76 +10,47 @@
     'use strict';
 
     // Configuración de operadores móviles colombianos (300-399)
+    // Nota: Debido a la portabilidad numérica, estos prefijos indican el operador original de asignación
     const OPERADORES = {
-        // Claro
-        300: 'Claro', 301: 'Claro', 302: 'Claro', 303: 'Claro', 304: 'Claro',
-        305: 'Claro', 310: 'Claro', 311: 'Claro', 312: 'Claro', 313: 'Claro',
+        // Claro (310-329)
+        310: 'Claro', 311: 'Claro', 312: 'Claro', 313: 'Claro',
         314: 'Claro', 315: 'Claro', 316: 'Claro', 317: 'Claro', 318: 'Claro',
         319: 'Claro', 320: 'Claro', 321: 'Claro', 322: 'Claro', 323: 'Claro',
+        326: 'Claro', 327: 'Claro', 328: 'Claro', 329: 'Claro',
         
-        // Movistar
-        350: 'Movistar', 351: 'Movistar', 352: 'Movistar', 353: 'Movistar',
-        
-        // Tigo
+        // Tigo/Colombia Móvil (300-309)
         300: 'Tigo', 301: 'Tigo', 302: 'Tigo', 303: 'Tigo', 304: 'Tigo',
         305: 'Tigo', 306: 'Tigo', 307: 'Tigo', 308: 'Tigo', 309: 'Tigo',
-        310: 'Tigo', 311: 'Tigo', 312: 'Tigo', 313: 'Tigo', 314: 'Tigo',
-        315: 'Tigo', 316: 'Tigo', 317: 'Tigo', 318: 'Tigo', 319: 'Tigo',
         
-        // Avantel
+        // Movistar (350-359)
+        350: 'Movistar', 351: 'Movistar', 352: 'Movistar', 353: 'Movistar',
+        354: 'Movistar', 355: 'Movistar', 356: 'Movistar', 357: 'Movistar',
+        358: 'Movistar', 359: 'Movistar',
+        
+        // Avantel (330-333)
         330: 'Avantel', 331: 'Avantel', 332: 'Avantel', 333: 'Avantel',
         
-        // ETB
-        340: 'ETB',
+        // ETB (340-343, 325)
+        325: 'ETB', 340: 'ETB', 341: 'ETB', 342: 'ETB', 343: 'ETB',
         
-        // Otros operadores móviles
-        324: 'Uff Móvil', 325: 'ETB', 326: 'Claro', 327: 'Claro',
-        328: 'Claro', 329: 'Claro', 334: 'Flash Mobile', 335: 'Flash Mobile',
-        336: 'Flash Mobile', 337: 'Flash Mobile', 338: 'Flash Mobile',
-        339: 'Flash Mobile', 341: 'ETB', 342: 'ETB', 343: 'ETB',
+        // Virgin Mobile (344-349)
         344: 'Virgin Mobile', 345: 'Virgin Mobile', 346: 'Virgin Mobile',
         347: 'Virgin Mobile', 348: 'Virgin Mobile', 349: 'Virgin Mobile',
-        354: 'Movistar', 355: 'Movistar', 356: 'Movistar', 357: 'Movistar',
-        358: 'Movistar', 359: 'Movistar', 360: 'WOM', 361: 'WOM',
-        362: 'WOM', 363: 'WOM', 364: 'WOM', 365: 'WOM', 366: 'WOM',
-        367: 'WOM', 368: 'WOM', 369: 'WOM'
+        
+        // WOM (360-369)
+        360: 'WOM', 361: 'WOM', 362: 'WOM', 363: 'WOM', 364: 'WOM',
+        365: 'WOM', 366: 'WOM', 367: 'WOM', 368: 'WOM', 369: 'WOM',
+        
+        // Flash Mobile (334-339)
+        334: 'Flash Mobile', 335: 'Flash Mobile', 336: 'Flash Mobile',
+        337: 'Flash Mobile', 338: 'Flash Mobile', 339: 'Flash Mobile',
+        
+        // Uff Móvil (324)
+        324: 'Uff Móvil'
     };
 
-    // Códigos de área por ciudad/departamento
-    const CIUDADES = {
-        // Bogotá y Cundinamarca
-        '601': 'Bogotá', '1': 'Bogotá',
-        
-        // Costa Atlántica
-        '605': 'Barranquilla', '5': 'Barranquilla',
-        '604': 'Cartagena', '4': 'Cartagena',
-        '608': 'Santa Marta', '8': 'Santa Marta',
-        '607': 'Montería', '7': 'Montería',
-        '606': 'Valledupar', '6': 'Valledupar',
-        '609': 'Sincelejo', '9': 'Sincelejo',
-        
-        // Valle del Cauca
-        '602': 'Cali', '2': 'Cali',
-        '603': 'Palmira', '3': 'Palmira',
-        
-        // Eje Cafetero
-        '606': 'Manizales', 
-        '606': 'Pereira',
-        '607': 'Armenia',
-        
-        // Santanderes
-        '607': 'Bucaramanga',
-        '608': 'Cúcuta',
-        
-        // Antioquia
-        '604': 'Medellín',
-        
-        // Otros
-        '608': 'Neiva',
-        '608': 'Pasto',
-        '608': 'Ibagué',
-        '605': 'Villavicencio'
-    };
+    // Nota: Los números móviles en Colombia no tienen códigos de área geográficos
+    // La clasificación se hace por operador
 
     // Clase principal del extractor
     class ExtractorNumerosCol {
@@ -203,20 +174,24 @@
 
         /**
          * Determina la región basada en el prefijo
+         * Los números móviles en Colombia son nacionales, no tienen región geográfica
          */
         determinarRegion(prefijo) {
-            // La región móvil no está directamente relacionada con la ubicación
-            // pero podemos clasificar por operador y zona
-            if (prefijo >= 300 && prefijo <= 329) {
-                return 'Nacional - Claro/Tigo';
+            // Clasificación por rangos de operadores
+            if (prefijo >= 300 && prefijo <= 309) {
+                return 'Colombia - Cobertura Nacional';
+            } else if (prefijo >= 310 && prefijo <= 329) {
+                return 'Colombia - Cobertura Nacional';
             } else if (prefijo >= 330 && prefijo <= 349) {
-                return 'Nacional - Avantel/ETB/Flash/Virgin';
+                return 'Colombia - Cobertura Nacional';
             } else if (prefijo >= 350 && prefijo <= 359) {
-                return 'Nacional - Movistar';
+                return 'Colombia - Cobertura Nacional';
             } else if (prefijo >= 360 && prefijo <= 369) {
-                return 'Nacional - WOM';
+                return 'Colombia - Cobertura Nacional';
+            } else if (prefijo >= 370 && prefijo <= 399) {
+                return 'Colombia - Cobertura Nacional';
             } else {
-                return 'Nacional - Otros';
+                return 'Colombia - Cobertura Nacional';
             }
         }
 
